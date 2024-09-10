@@ -48,47 +48,7 @@ def main():
    Fila = randint(1,29)
    print(f"{título} {nombre_completo} el vuelo será el {num_dia}/{num_mes} con la silla {Asiento} {Fila}, con un valor de {costo}. Su vuelo quedó reservado. Gracias por volar con nosotros")
 
-   pass
-
-    
-
-
-   
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   pass 
 
 
 if __name__ == "__main__":
