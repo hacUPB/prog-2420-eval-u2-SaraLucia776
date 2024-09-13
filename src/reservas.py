@@ -46,7 +46,7 @@ def main():
       else:
          break 
    
-
+   # Fecha y costo
    fecha = datetime.datetime(num_año,num_mes,num_dia)
    dias_semana = [0,1,2,3]
    dias_fin_semana = [4,5,6]
@@ -69,6 +69,7 @@ def main():
          else: 
             costo = 213000
          break
+   
    # Selección de la silla 
    while True:
       asiento = (input("Ingrese el asiento de su preferencia (Ventana, Sin preferencia, Pasillo)"))
