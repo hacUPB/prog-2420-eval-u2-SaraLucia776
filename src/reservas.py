@@ -8,34 +8,20 @@ from random import randint
 def main():
    distancia = 0 
    costo = 0
-   ciudades = ['Medellín', 'Bogotá', 'Cartagena']
+   ciudades = ['Medellín', 'medellin','Medellin', 'medellín', 'Bogotá', 'bogota', 'Bogota', 'bogotá', 'Cartagena', 'cartagena']
    
-   # Datos del usuario 
-   título = input("Ingrese su título (Sr o Sra) ").capitalize()
+   # Datos del usuario
    nombre_completo = input("Ingrese su nombre completo: ")
-   
-   if título == ("Sr"):
-     print(f" {título} {nombre_completo} Bienvenido a Sky Airlines")
-   elif título == ("Sra"):
-     print(f"{título} {nombre_completo} Bienvenida a Sky Airlines")
-
-   # Ciudad de origen y destino
-   origen = str(input("Ingrese la ciudad de origen (Medellín, Bogotá, Cartagena)"))
    while True:
-      if origen not in ciudades: 
-         print("Ciudad de origen incorrecta, seleccione nuevamente")
-         origen = str(input("Ingrese la ciudad de origen (Medellín, Bogotá, Cartagena)"))
-      else:
+      título = input("Ingrese su título (Sr o Sra) ").capitalize()
+      if título == ("Sr"):
+         print(f"{título} {nombre_completo} Bienvenido a Sky Airlines")
          break
-   
-   destino = str(input("Ingrese la ciudad de destino (Medellín, Bogotá, Cartagena ) "))
-   while True:
-      if destino not in ciudades: 
-         print("Ciudad de destino incorrecta, seleccione nuevamente")
-         destino = str(input("Ingrese la ciudad de destino (Medellín, Bogotá, Cartagena ) "))
+      elif título == ("Sra"):
+         print(f"{título} {nombre_completo} Bienvenida a Sky Airlines")
+         break
       else:
-         break 
-   
+         print("Escriba un titulo correcto.")
    # Fecha del viaje, costo y distancia
    num_dia = int(input("Ingrese el día del mes en el que viajará "))
    num_mes = int(input("Ingrese el número del mes en el que viajará "))
@@ -48,42 +34,56 @@ def main():
       else:
          break    
 
+   # Ciudad de origen y destino
+   while True:
+      origen = str(input("Ingrese la ciudad de origen (Medellín, Bogotá, Cartagena)"))
+      destino = str(input("Ingrese la ciudad de destino (Medellín, Bogotá, Cartagena ) "))
+      if origen not in ciudades: 
+         print("Ciudad de origen incorrecta, seleccione nuevamente")
+      elif destino not in ciudades: 
+         print("Ciudad de destino incorrecta, seleccione nuevamente")
+      elif destino == origen:
+         print("Viaje no disponible")
+      else:
+         break 
+   
+
    fecha = datetime.datetime(num_año,num_mes,num_dia)
-   dias_semana = [1,2,3,4]
-   dias_fin_semana = [5,6,7]
-   
-   if origen == ciudades[0] and destino == ciudades[1] or origen == ciudades[1] and destino == ciudades[0]: 
-      distancia = 241
-      if fecha.isoweekday() in dias_semana:
-         costo = 79900
-      else: 
-         costo = 119900
-   elif origen == ciudades[0] and destino == ciudades[2] or origen == ciudades[2] and destino == ciudades[0]:
-      distancia = 461 
-      if fecha.isoweekday() in dias_semana:
-         costo = 156900
-      else: 
-         costo = 213000
-   elif origen == ciudades[1] and destino == ciudades[2] or origen == ciudades[2] and destino == ciudades[1]:
-      distancia = 657
-      if fecha.isoweekday() in dias_semana: 
-         costo = 156900
-      else: 
-         costo = 213000
-   else: 
-      print("Viaje no disponible")
-   
+   dias_semana = [0,1,2,3]
+   dias_fin_semana = [4,5,6]
+   while True:   
+      if origen == ciudades[0:4] and destino == ciudades[4:8] or origen == ciudades[4:8] and destino == ciudades[0:4]: 
+         if fecha.isoweekday() in dias_semana:
+            costo = 79900         
+         else: 
+            costo = 119900
+         break
+      elif origen == ciudades[0:4] and destino == ciudades[8:9] or origen == ciudades[8:9] and destino == ciudades[0:4]:
+         if fecha.isoweekday() in dias_semana:
+            costo = 156900            
+         else: 
+            costo = 213000      
+         break      
+      elif origen == ciudades[4:8] and destino == ciudades[8:9] or origen == ciudades[8:9] and destino == ciudades[4:8]:
+         if fecha.isoweekday() in dias_semana: 
+            costo = 156900            
+         else: 
+            costo = 213000
+         break
    # Selección de la silla 
-   asientos = ['A', 'B', 'C']
-   asiento = (input("Ingrese el asiento de su preferencia (Ventana, Sin preferencia, Pasillo)"))
-   if asiento == "Ventana":
-      asiento = 'A'
-   elif asiento == "Sin preferencia":
-      asiento = 'B' 
-   elif asiento == "Pasillo":
-      asiento = 'C'
-   else: 
-      print("Seleccione una opción correcta")
+   while True:
+      asiento = (input("Ingrese el asiento de su preferencia (Ventana, Sin preferencia, Pasillo)"))
+      if asiento == "Ventana" or asiento == 'ventana':
+         asiento = 'A'
+         break
+      elif asiento == "Sin preferencia" or asiento == 'sin preferencia':
+         asiento = 'B' 
+         break
+      elif asiento == "Pasillo" or asiento == 'pasillo':
+         asiento = 'C'
+         break
+      else: 
+         print("Seleccione una opción correcta")
    Fila = randint(1,29)
    print(f"{título} {nombre_completo} su vuelo será el {num_dia}/{num_mes}/{num_año} desde {origen} hacia {destino} con la silla {asiento}{Fila}, por un valor de {costo}. Su vuelo quedó reservado. Gracias por volar con nosotros")
 

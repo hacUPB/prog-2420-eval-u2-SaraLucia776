@@ -26,3 +26,5 @@ if (origen == "Bogotá" and destino == "Medellín") or (origen == "Medellín" an
         price = 170000
 else:
     print("Viaje no disponible")
+
+    print(fecha.isoweekday())
