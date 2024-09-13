@@ -7,9 +7,15 @@ def main():
     orbitas = 0
     while alt_inicial > alt_min_seg:
         altitud_perdida = coe_arrastre * alt_inicial
-        alt_inicial = alt_inicial - altitud_perdida
-        coe_arrastre += 0.0001
-        orbitas += 1
+        if altitud_perdida < 0.5:
+            print("Satélite se ha estabilizado")
+        else:
+            alt_inicial = alt_inicial - altitud_perdida
+            coe_arrastre += 0.0001
+            orbitas += 1
+            print(f"Órbita: {orbitas}, Altitud actual:  {alt_inicial}, Coeficiente de arrastre:  {coe_arrastre}")
+    print(f"Número total de órbitas:  {orbitas}")   
+    
         
 
 
