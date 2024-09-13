@@ -9,7 +9,6 @@ def main():
    distancia = 0 
    costo = 0
    ciudades = ['Medellín', 'medellin','Medellin', 'medellín', 'Bogotá', 'bogota', 'Bogota', 'bogotá', 'Cartagena', 'cartagena']
-   
    # Datos del usuario
    nombre_completo = input("Ingrese su nombre completo: ")
    while True:
@@ -37,7 +36,7 @@ def main():
    # Ciudad de origen y destino
    while True:
       origen = str(input("Ingrese la ciudad de origen (Medellín, Bogotá, Cartagena)"))
-      destino = str(input("Ingrese la ciudad de destino (Medellín, Bogotá, Cartagena ) "))
+      destino = str(input("Ingrese la ciudad de destino (Medellín, Bogotá, Cartagena )"))
       if origen not in ciudades: 
          print("Ciudad de origen incorrecta, seleccione nuevamente")
       elif destino not in ciudades: 
@@ -52,19 +51,19 @@ def main():
    dias_semana = [0,1,2,3]
    dias_fin_semana = [4,5,6]
    while True:   
-      if origen == ciudades[0:4] and destino == ciudades[4:8] or origen == ciudades[4:8] and destino == ciudades[0:4]: 
+      if origen in ciudades[0:4] and destino in ciudades[4:8] or origen in ciudades[4:8] and destino in ciudades[0:4]: 
          if fecha.isoweekday() in dias_semana:
             costo = 79900         
          else: 
             costo = 119900
          break
-      elif origen == ciudades[0:4] and destino == ciudades[8:9] or origen == ciudades[8:9] and destino == ciudades[0:4]:
+      elif origen in ciudades[0:4] and destino in ciudades[8:10] or origen in ciudades[8:10] and destino in ciudades[0:4]:
          if fecha.isoweekday() in dias_semana:
             costo = 156900            
          else: 
             costo = 213000      
          break      
-      elif origen == ciudades[4:8] and destino == ciudades[8:9] or origen == ciudades[8:9] and destino == ciudades[4:8]:
+      elif origen in ciudades[4:8] and destino in ciudades[8:10] or origen in ciudades[8:10] and destino in ciudades[4:8]:
          if fecha.isoweekday() in dias_semana: 
             costo = 156900            
          else: 
